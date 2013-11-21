@@ -1,4 +1,6 @@
-import SNP_ADTs
+import Variant_ADTs
 
-def phaseSNPs(motherSNPMap, fatherSNPMap, childSNPMap, outputFileName):
+#
+
+def phaseSNPs(motherVariantMap, fatherVariantMap, childVariantMap, outputFileName):
     print("I'm not done yet!!")

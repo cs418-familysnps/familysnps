@@ -6,7 +6,7 @@ VariantType = enum(HETEROZYGOUS = 0, HOMOZYGOUS = 1, SINGLESTRANDED = 2)
 
 '''Variant class, contains only the information needed to phase it'''
 class Variant:
-    myType = SNPType.HETEROZYGOUS
+    myType = VariantType.HETEROZYGOUS
     chromosome = -1
     location = -1
     
