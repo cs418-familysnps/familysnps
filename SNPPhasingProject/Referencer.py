@@ -42,3 +42,4 @@ def lookupReference(variantLocation):
 	genomeFile.seek(base/50 + base, 1)
 	
 	referenceBase = genomeFile.read(1)
+	return referenceBase
