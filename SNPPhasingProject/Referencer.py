@@ -42,9 +42,3 @@ def lookupReference(variantLocation):
 	genomeFile.seek(base/50 + base, 1)
 	
 	referenceBase = genomeFile.read(1)
-	
-	#lineNum = base / 50 + 1
-	#for i, line in enumerate(genomeFile):
-	#	if i == lineNum:
-	#		referenceBase = line[base % 50]
-	#		return referenceBase
