@@ -42,3 +42,5 @@ VariantPhaser.phaseVariants(testMotherMap2, testFatherMap2, testChildMap2, "test
 
 assert(testVariant1.allele1Source == "U")
 assert(testVariant1.allele2Source == "U")
+
+assert(lookupReference(("chr1",1)) == 't')
