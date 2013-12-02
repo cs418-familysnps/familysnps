@@ -37,17 +37,14 @@ def lookupReference(variantLocation):
 	(chromosome, base) = variantLocation
 	
 	genomeFile = open(GENOME_PATH + "/" + chromosome + ".fa")
-		
-	# there should only be one record.....
 	
-	lineNum = base / 50 + 1
+	firstLine = genomeFile.readline()
+	genomeFile.seek(base/50 + base, 1)
 	
-	for i, line in enumerate(genomeFile):
-		if i == lineNum:
-			referenceBase = line[base % 50]
-			return referenceBase
+	referenceBase = genomeFile.read(1)
 	
-	
-	#record = SeqIO.read(GENOME_PATH + "/" + str(chromosome) + ".fa", "fasta")
-	#referenceBase = line[base % 50]
-	#print referenceBase
+	#lineNum = base / 50 + 1
+	#for i, line in enumerate(genomeFile):
+	#	if i == lineNum:
+	#		referenceBase = line[base % 50]
+	#		return referenceBase
