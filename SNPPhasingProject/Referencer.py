@@ -12,31 +12,31 @@ def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap):
 		parentAllele = lookupReference(variant.location)
 
 
-		if variant.myType = VariantType.SINGLESTRANDED:
+		if variant.myType == VariantType.SINGLESTRANDED:
 
 			if fatherVariantMap[variant.location] == None:
-				fatherVariantMap[variant.location] = new Variant(variant.location, VariantType.DUMMY)
+				fatherVariantMap[variant.location] = Variant(variant.location, VariantType.DUMMY)
 
 			if motherVariantMap[variant.location] == None:
-				motherVariantMap[variant.location] = new Variant(variant.location, VariantType.DUMMY)
+				motherVariantMap[variant.location] = Variant(variant.location, VariantType.DUMMY)
 
 			continue
 
 		if fatherVariantMap[variant.location] == None:
-			fatherVariantMap[variant.location] = new Variant(variant.location, VariantType.HOMOZYGOUS) # TODO: we need the reference alleles
+			fatherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS) # TODO: we need the reference alleles
 			
 			
 
 		if motherVariantMap[variant.location] == None:
-			motherVariantMap[variant.location] = new Variant(variant.location, VariantType.HOMOZYGOUS) # TODO: we need the reference alleles
+			motherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS) # TODO: we need the reference alleles
 			
 def lookupReference(variantLocation):
 
-	GENOME_PATH="/fsl_group/fslg_hap_rockets/compute/data/hg18"
+	GENOME_PATH="/fslgroup/fslg_hap_rockets/compute/data/hg18"
 
-	chromosome = variant.location[1]
+	chromosome = variantLocation[0]
 		
 	# there should only be one record.....
-	record = SeqIO.read(GENOME_PATH + "/" + chromosome, "fasta"):
-	referenceBase = record.seq[variant.location[0]]
+	record = SeqIO.read(GENOME_PATH + "/" + str(chromosome) + ".fa", "fasta")
+	referenceBase = record.seq[variantLocation[1]]
 	print referenceBase
