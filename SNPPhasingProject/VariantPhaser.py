@@ -1,20 +1,23 @@
-import Variant_ADTs
+from Variant_ADTs import Variant
+from Variant_ADTs import VariantType
 
-#
 
-def phaseSNPs(motherVariantMap, fatherVariantMap, childVariantMap, outputFileName):
+def phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, outputFileName):
     
-
     for location in childVariantMap.keys():
 
-        if childVariantMap[location].myType == VariantType.HOMOZYGOUS:
+        variant = childVariantMap[location]
+        #print("variant was: ", variant.allele1, variant.allele2)
+        if variant.myType == VariantType.HOMOZYGOUS:
+            variant.allele1Source = "U"
+            variant.allele2Source = "U"
             continue
 
         if variant.myType == VariantType.SINGLESTRANDED:
 
-            if fatherVariantMap[variant.location].myType == SINGLESTRANDED:
+            if fatherVariantMap[variant.location].myType == VariantType.SINGLESTRANDED:
                 variant.allele1Source = "F"
-            else if motherVariantMap[variant.location].myType == SINGLESTRANDED:
+            elif motherVariantMap[variant.location].myType == VariantType.SINGLESTRANDED:
                 variant.allele1Source = "M"
             else:
                 variant.allele1Source = "U"
@@ -23,8 +26,8 @@ def phaseSNPs(motherVariantMap, fatherVariantMap, childVariantMap, outputFileNam
 
         #  This is the real meat of the algorithm
         if variant.myType == VariantType.HETEROZYGOUS:
-
-            if fatherVariantMap[variant.location].myType == HOMOZYGOUS:
+            #print("was heterozygous")
+            if fatherVariantMap[variant.location].myType == VariantType.HOMOZYGOUS:
 
                 if fatherVariantMap[variant.location].allele1 == variant.allele1:
 
@@ -34,17 +37,17 @@ def phaseSNPs(motherVariantMap, fatherVariantMap, childVariantMap, outputFileNam
                     variant.allele1Source = "M"
                     variant.allele2Source = "F"
 
-        else if motherVariantMap[variant.location].myType == HOMOZYGOUS:
+            elif motherVariantMap[variant.location].myType == VariantType.HOMOZYGOUS:
 
-            if motherVariantMap[variant.location].allele1 == variant.allele1:
+                if motherVariantMap[variant.location].allele1 == variant.allele1:
 
-                variant.allele1Source = "M"
-                variant.allele2Source = "F"
-            else:
-                variant.allele1Source = "F"
-                variant.allele2Source = "M"
+                    variant.allele1Source = "M"
+                    variant.allele2Source = "F"
+                else:
+                    variant.allele1Source = "F"
+                    variant.allele2Source = "M"
 
-        else:     # In the case of parents both giving a different variant to their child, this would be phaseable, but that is rare and time is short.
-                  # Feel free to improve the code to take that case into account.
-            variant.allele1Source = "U"
-            variant.allele2Source = "U"
+            else:     # In the case of parents both giving a different variant to their child, this would be phaseable, but that is rare and time is short.
+                      # Feel free to improve the code to take that case into account.
+                variant.allele1Source = "U"
+                variant.allele2Source = "U"
