@@ -34,9 +34,20 @@ def lookupReference(variantLocation):
 
 	GENOME_PATH="/fslgroup/fslg_hap_rockets/compute/data/hg18"
 
-	chromosome = variantLocation[0]
+	(chromosome, base) = variantLocation
+	
+	genomeFile = open(GENOME_PATH + "/" + chromosome + ".fa")
 		
 	# there should only be one record.....
-	record = SeqIO.read(GENOME_PATH + "/" + str(chromosome) + ".fa", "fasta")
-	referenceBase = record.seq[variantLocation[1]]
-	print referenceBase
+	
+	lineNum = base / 50 + 1
+	
+	for i, line in enumerate(genomeFile):
+		if i == lineNum:
+			referenceBase = line[base % 50]
+			return referenceBase
+	
+	
+	#record = SeqIO.read(GENOME_PATH + "/" + str(chromosome) + ".fa", "fasta")
+	#referenceBase = line[base % 50]
+	#print referenceBase
