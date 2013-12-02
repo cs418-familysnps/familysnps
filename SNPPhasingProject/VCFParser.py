@@ -9,8 +9,10 @@ import vcf
 vcf_reader = vcf.Reader(open('top_5000_lines.vcf', 'r'))
 
 for record in vcf_reader:
-    if(len(record.REF) == 1 and record.ALT[0] != None and len(record.ALT) == 1):
-        print record.REF,record.ALT[0],'  ',len(record.ALT)
+    temp = str(record.ALT[0])
+    if(len(record.REF) == 1 and record.ALT[0] != None and len(temp) == 1):
+    	len(temp)
+        print record.REF,record.ALT[0],'  ',record.POS
     #Record.CHROM``
     #Record.POS``
     #Record.ID``
