@@ -17,5 +17,8 @@ class Variant:
     allele1Source = ""
     allele2Source = ""
 	
-	def getAlleles():
-		return [allele1, allele2];
+    def __str__(self):
+        return "SNP(%s, %s, %s/%s)" % (self.myType, self.location, self.allele1, self.allele2)
+
+	#def getAlleles():
+	#	return [allele1, allele2];
