@@ -1,7 +1,8 @@
 import VariantPhaser
 from Variant_ADTs import Variant
 from Variant_ADTs import VariantType
-
+from Referencer import referenceVariantMaps
+from Referencer import lookupReference
 
 testVariant1 = Variant()
 testVariant2 = Variant()
@@ -30,6 +31,10 @@ testMotherMap2 = {testVariant2.location:testVariant2}
 testFatherMap2 = {testVariant3.location:testVariant3}
 testChildMap2 = {testVariant1.location:testVariant1}
 
+testMotherMap3 = {testVariant2.location:testVariant2}
+testFatherMap3 = {}
+testChildMap3 = {testVariant1.location:testVariant1}
+
 
 # begin VariantPhaser test
 
@@ -44,3 +49,20 @@ assert(testVariant1.allele1Source == "U")
 assert(testVariant1.allele2Source == "U")
 
 assert(lookupReference(("chr1",1)) == 't')
+
+# begin Referencer test
+
+referenceVariantMaps(testMotherMap3, testFatherMap3, testChildMap3)
+
+assert(testFatherMap3[('chr1', 1)] != None)
+
+
+
+
+
+
+
+
+
+
+
