@@ -48,13 +48,14 @@ VariantPhaser.phaseVariants(testMotherMap2, testFatherMap2, testChildMap2, "test
 assert(testVariant1.allele1Source == "U")
 assert(testVariant1.allele2Source == "U")
 
-assert(lookupReference(("chr1",1)) == 't')
 
 # begin Referencer test
 
+assert(lookupReference(("chr1",1)) == 't')
+
 referenceVariantMaps(testMotherMap3, testFatherMap3, testChildMap3)
 
-assert(testFatherMap3[('chr1', 1)] != None)
+assert(testFatherMap3.get(('chr1', 1), None) != None)
 
 
 
