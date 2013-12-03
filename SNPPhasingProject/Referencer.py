@@ -2,35 +2,46 @@
 #  We need this information to phase the child's variants.
 
 from Bio import SeqIO
+from Variant_ADTs import VariantType
+from Variant_ADTs import Variant
 
 def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap):
 	
 	# for each of the child's variants
 
-	for variant in childVariantMap:
+	for location in childVariantMap:
 		
-		parentAllele = lookupReference(variant.location)
+		variant = childVariantMap[location]
+		parentAllele = lookupReference(location)
 
 
 		if variant.myType == VariantType.SINGLESTRANDED:
 
-			if fatherVariantMap[variant.location] == None:
-				fatherVariantMap[variant.location] = Variant(variant.location, VariantType.DUMMY)
+			if fatherVariantMap.get(location, None) == None:
+				fatherVariantMap[location] = Variant(variant.location, VariantType.DUMMY)
 
-			if motherVariantMap[variant.location] == None:
-				motherVariantMap[variant.location] = Variant(variant.location, VariantType.DUMMY)
+			if motherVariantMap.get(location, None) == None:
+				motherVariantMap[location] = Variant(location, VariantType.DUMMY)
 
 			continue
 
-		if fatherVariantMap[variant.location] == None:
-                        allele = lookupReference(variant.location)
-                        fatherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS, allele, allele)
+		if fatherVariantMap.get(location, None) == None:
+                        allele = lookupReference(location)
+                        fatherVariantMap[location] = Variant()
+                        fatherVariantMap[location].location = location
+                        fatherVariantMap[location].myType = VariantType.HOMOZYGOUS
+                        fatherVariantMap[location].allele1 = allele
+                        fatherVariantMap[location].allele2 = allele
 			
 			
 
-		if motherVariantMap[variant.location] == None:
-                        allele = lookupReference(variant.location)
-                        motherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS, allele, allele)
+		if motherVariantMap.get(location, None) == None:
+                        allele = lookupReference(location)
+                        motherVariantMap[location] = Variant()
+                        motherVariantMap[location].location = location
+                        motherVariantMap[location].myType = VariantType.HOMOZYGOUS
+                        motherVariantMap[location].allele1 = allele
+                        motherVariantMap[location].allele2 = allele
 			
 def lookupReference(variantLocation):
 
@@ -41,7 +52,7 @@ def lookupReference(variantLocation):
 	genomeFile = open(GENOME_PATH + "/" + chromosome + ".fa")
 	
 	firstLine = genomeFile.readline()
-	genomeFile.seek(base/50 + base, 1)
+	genomeFile.seek(base/50 + base - 1, 1) # the reference genomes are 1-indexed
 	
 	referenceBase = genomeFile.read(1)
 	return referenceBase
