@@ -23,12 +23,14 @@ def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap):
 			continue
 
 		if fatherVariantMap[variant.location] == None:
-			fatherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS) # TODO: we need the reference alleles
+                        allele = lookupReference(variant.location)
+                        fatherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS, allele, allele)
 			
 			
 
 		if motherVariantMap[variant.location] == None:
-			motherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS) # TODO: we need the reference alleles
+                        allele = lookupReference(variant.location)
+                        motherVariantMap[variant.location] = Variant(variant.location, VariantType.HOMOZYGOUS, allele, allele)
 			
 def lookupReference(variantLocation):
 
