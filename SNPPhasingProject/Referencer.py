@@ -44,10 +44,17 @@ def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap):
                         motherVariantMap[location].allele2 = allele
 			
 def lookupReference(variantLocation):
+	
+	if(variantLocation == None):
+		print "Invalid variant location format" + str(variantLocation)
+		return None
 
 	GENOME_PATH="/fslgroup/fslg_hap_rockets/compute/data/hg18"
 
-	(chromosome, base) = variantLocation
+	chromosome = variantLocation[0]
+	if(isinstance(chromosome, int) or chromosome.isdigit()):
+		chromosome = "chr" + str(chromosome)
+	base = int(variantLocation[1])
 	
 	genomeFile = open(GENOME_PATH + "/" + chromosome + ".fa")
 	

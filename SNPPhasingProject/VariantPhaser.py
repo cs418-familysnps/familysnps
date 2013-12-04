@@ -4,6 +4,8 @@ from Variant_ADTs import VariantType
 
 def phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, outputFileName):
     
+    outputFile = open(outputFileName,'w')
+
     for location in childVariantMap.keys():
 
         variant = childVariantMap[location]
@@ -51,3 +53,7 @@ def phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, outputFil
                       # Feel free to improve the code to take that case into account.
                 variant.allele1Source = "U"
                 variant.allele2Source = "U"
+
+	# Write to file
+	line = " ".join([variant.location[0], variant.location[1], variant.allele1, variant.allele1Source, variant.allele2, variant.allele2Source])
+	outputFile.write(line + "\n")

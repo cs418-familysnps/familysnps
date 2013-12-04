@@ -29,6 +29,7 @@ def parse23andmeFile(file):
 	
 	
 			variant.location = ("chr%s" % (chromosome),position)
+			
 			variant.allele1 = alt[0]
 			
 			if len(alt) == 2:
@@ -36,7 +37,7 @@ def parse23andmeFile(file):
 			else:
 				variant.allele2 = alt[0]
 	
-			dictionary[position] = variant
-	
+			#dictionary[position] = variant
+			dictionary[variant.location] = variant
 	
 	return dictionary			
