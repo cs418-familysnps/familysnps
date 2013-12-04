@@ -1,6 +1,7 @@
 import sys
 from Referencer import referenceVariantMaps
 from VariantPhaser import phaseVariants
+from 23andme import parse23andmeFile
 
 # Given a valid filename of a vcf or 23andme file, returns a mapping of location to Variant
 def mapInputFile(fileName):
@@ -21,7 +22,7 @@ def mapInputFile(fileName):
         print("")#TODO: do VCF parsing here, and return the map
 
     if fileType == 'txt':
-        print("")#TODO do 23andMe parsing here, and return the map
+        return parse23andmeFile(inputFile)
 
 motherFileName = ''
 fatherFileName = ''
