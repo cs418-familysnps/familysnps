@@ -42,6 +42,7 @@ motherVariantMap = mapInputFile(motherFileName)
 fatherVariantMap = mapInputFile(fatherFileName)
 childVariantMap = mapInputFile(childFileName)
 
-
+print "Referencing Variant Maps"
 referenceVariantMaps(motherVariantMap, fatherVariantMap, childVariantMap)
+print "Phasing variants"
 phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, 'phasedvariants.txt')
