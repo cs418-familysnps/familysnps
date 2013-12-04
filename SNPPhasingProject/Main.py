@@ -1,6 +1,7 @@
 import sys
 from Referencer import referenceVariantMaps
 from VariantPhaser import phaseVariants
+from parse23andme import parse23andmeFile
 from Variant_ADTs import Variant
 from Variant_ADTs import VariantType
 import sys
@@ -48,7 +49,7 @@ def mapInputFile(fileName):
         print("")#TODO: do VCF parsing here, and return the map
 
     if fileType == 'txt':
-        print("")#TODO do 23andMe parsing here, and return the map
+        return parse23andmeFile(inputFile)
 
 
 if len(sys.argv) < 5:
@@ -60,9 +61,12 @@ fatherFileName = sys.argv[2]
 childFileName = sys.argv[3]
 pathToReference = sys.argv[4]
 
+print "Reading input files"
 motherVariantMap = mapInputFile(motherFileName)
 fatherVariantMap = mapInputFile(fatherFileName)
 childVariantMap = mapInputFile(childFileName)
 
+print "Referencing Variant Maps"
 referenceVariantMaps(motherVariantMap, fatherVariantMap, childVariantMap)
+print "Phasing variants"
 phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, 'phasedvariants.txt')
