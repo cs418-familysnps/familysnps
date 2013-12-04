@@ -2,9 +2,9 @@ import sys
 from Variant_ADTs import Variant
 from Variant_ADTs import VariantType
 
-def parse23andmeFile(fileName):
+def parse23andmeFile(file):
 	
-	SNPfile = open(sys.argv[1])
+	SNPfile = file
 
 	dictionary = {}
 
