@@ -10,8 +10,8 @@ class Variant:
     location = ("chr-1", -1)
     
     # could be bases or vcf indel notation
-    allele1 = ""
-    allele2 = ""
+    allele1 = "" #for VCF this is the reference
+    allele2 = "" #for VCD this is the alternate
 
     # "M" for mother, "F" for father
     allele1Source = ""
