@@ -45,9 +45,8 @@ def mapInputFile(fileName):
         exit(1)
 
     if fileType == 'vcf':
-        snps = getVCFDictionary(fileName);
-        print("")#TODO: do VCF parsing here, and return the map
-
+        return getVCFDictionary(fileName);
+        
     if fileType == 'txt':
         return parse23andmeFile(inputFile)
 
