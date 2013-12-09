@@ -22,3 +22,9 @@ Output is printed to the screen, so route it to a file.  An example output would
 chr1 358793874 A M T F
 
 The position of the chromosome comes first, followed by the first allele and its source and the second allele and its source, either "M" for mother, "F" for father, or "U" for unknown, in the case of an unphasable variant.
+
+EXAMPLE:
+
+python Main.py $MOTHER_VCF $FATHER_VCF $CHILD_VCF $REF_GENOME >
+"$OUTFILE"
+
