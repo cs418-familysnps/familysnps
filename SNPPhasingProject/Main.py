@@ -16,17 +16,24 @@ pathToReference = ''
 def getVCFDictionary(fileName):
     vcf_reader = vcf.Reader(open(fileName, 'r'))
     snps = dict();
+    num_records = 0
     for record in vcf_reader:        
+	# print status
+	num_records += 1
+	if(num_records % 1000 == 0):
+		print "%i VCF records read" % num_records
+
         if(len(record.REF) == 1 and record.ALT[0] != None and len(str(record.ALT[0])) == 1):
             variant = Variant()
             variant.allele1 = record.REF
             variant.allele2 = record.ALT[0]
+            variant.location = (record.CHROM, record.POS)
             if(record.num_het == 1):
                 variant.myType = VariantType.HETEROZYGOUS
             elif(record.num_hom_alt == 1):
                 variant.myType = VariantType.HOMOZYGOUS   
-            snps.update({record.POS : variant})
-            print len(snps)
+            snps.update({variant.location : variant})
+            #print len(snps)
     return snps
 
 # Given a valid filename of a vcf or 23andme file, returns a mapping of location to Variant
@@ -66,6 +73,6 @@ fatherVariantMap = mapInputFile(fatherFileName)
 childVariantMap = mapInputFile(childFileName)
 
 print "Referencing Variant Maps"
-referenceVariantMaps(motherVariantMap, fatherVariantMap, childVariantMap)
+referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap, pathToReference)
 print "Phasing variants"
 phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, 'phasedvariants.txt')
