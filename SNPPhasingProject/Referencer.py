@@ -8,7 +8,7 @@ from Variant_ADTs import Variant
 REFERENCE = ''
 
 def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap, pathToReference):
-	
+	global REFERENCE
 	# for each of the child's variants
 	REFERENCE = pathToReference
 	numLocations = 0
@@ -53,7 +53,7 @@ def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap, pa
                         motherVariantMap[location].allele2 = allele
 			
 def lookupReference(variantLocation):
-	
+	global REFERENCE
 	if(variantLocation == None):
 		print "Invalid variant location format" + str(variantLocation)
 		return None
