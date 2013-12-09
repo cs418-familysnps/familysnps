@@ -1,8 +1,15 @@
 import VariantPhaser
+import sys
 from Variant_ADTs import Variant
 from Variant_ADTs import VariantType
 from Referencer import referenceVariantMaps
 from Referencer import lookupReference
+
+pathToReference = ""
+if len(sys.argv) < 2:
+  print("No reference file given.  Referencer.py will not be tested.")
+else:
+  pathToReference = argv[1]
 
 testVariant1 = Variant()
 testVariant2 = Variant()
@@ -51,11 +58,13 @@ assert(testVariant1.allele2Source == "U")
 
 # begin Referencer test
 
-assert(lookupReference(("chr1",1)) == 't')
+if pathToReference != "":
 
-referenceVariantMaps(testMotherMap3, testFatherMap3, testChildMap3)
+  assert(lookupReference(("chr1",1)) == 't')
 
-assert(testFatherMap3.get(('chr1', 1), None) != None)
+  referenceVariantMaps(testMotherMap3, testFatherMap3, testChildMap3, pathToReference)
+
+  assert(testFatherMap3.get(('chr1', 1), None) != None)
 
 
 
