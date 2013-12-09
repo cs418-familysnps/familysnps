@@ -31,9 +31,10 @@ rs11807848	1	1051029	TT
 
 The function ignores all lines that begin with '#'. There should be no empty newlines. 
 
-The 
+The function creates a Variant object for each SNP and stores it in a dictionary where the SNP location is the key
+and the Variant object is the value. 
 
-
+'''
 
 
 
