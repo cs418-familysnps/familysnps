@@ -14,6 +14,12 @@ Arguments are:
   
 The 3 variant files do not have to all be the same format, but they all have to be using the same reference genome.
 
+
+Example:
+
+python Main.py $MOTHER_VCF $FATHER_VCF $CHILD_VCF $REF_GENOME >
+"$OUTFILE"
+
   
 OUTPUT:
   
@@ -23,11 +29,7 @@ chr1 358793874 A M T F
 
 The position of the chromosome comes first, followed by the first allele and its source and the second allele and its source, either "M" for mother, "F" for father, or "U" for unknown, in the case of an unphasable variant.
 
-EXAMPLE:
 
-python Main.py $MOTHER_VCF $FATHER_VCF $CHILD_VCF $REF_GENOME >
-"$OUTFILE"
+TESTING:
 
-
-Our example was built using the hg18 genome, downloaded at
-http://hgdownload.soe.ucsc.edu/goldenPath/hg18/bigZips/chromFa.zip.
+To test the files after a change, run "python TestDriver.py [REFERENCELOCATION]".  If no reference genome is given the test will skip the part of the test that deals with Referencer.py.
