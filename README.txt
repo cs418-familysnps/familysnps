@@ -28,3 +28,6 @@ EXAMPLE:
 python Main.py $MOTHER_VCF $FATHER_VCF $CHILD_VCF $REF_GENOME >
 "$OUTFILE"
 
+
+Our example was built using the hg18 genome, downloaded at
+http://hgdownload.soe.ucsc.edu/goldenPath/hg18/bigZips/chromFa.zip.
