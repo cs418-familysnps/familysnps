@@ -13,9 +13,8 @@ def phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, outputFil
         if variant.myType == VariantType.HOMOZYGOUS:
             variant.allele1Source = "U"
             variant.allele2Source = "U"
-            continue
 
-        if variant.myType == VariantType.SINGLESTRANDED:
+        elif variant.myType == VariantType.SINGLESTRANDED:
 
             if fatherVariantMap[variant.location].myType == VariantType.SINGLESTRANDED:
                 variant.allele1Source = "F"
@@ -24,10 +23,8 @@ def phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, outputFil
             else:
                 variant.allele1Source = "U"
 
-            continue
-
         #  This is the real meat of the algorithm
-        if variant.myType == VariantType.HETEROZYGOUS:
+        elif variant.myType == VariantType.HETEROZYGOUS:
             #print("was heterozygous")
             if fatherVariantMap[variant.location].myType == VariantType.HOMOZYGOUS:
 
@@ -55,5 +52,5 @@ def phaseVariants(motherVariantMap, fatherVariantMap, childVariantMap, outputFil
                 variant.allele2Source = "U"
 
 	# Write to file
-	line = " ".join([variant.location[0], variant.location[1], variant.allele1, variant.allele1Source, variant.allele2, variant.allele2Source])
+	line = " ".join([str(variant.location[0]), str(variant.location[1]), str(variant.allele1), str(variant.allele1Source), str(variant.allele2), str(variant.allele2Source)])
 	outputFile.write(line + "\n")

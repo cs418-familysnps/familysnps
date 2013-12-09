@@ -1,16 +1,25 @@
-#  This method adds Variants to the parent maps corresponding to all child variants, if they do not already exist there.
+# This method adds Variants to the parent maps corresponding to all child variants, if they do not already exist there.
 #  We need this information to phase the child's variants.
 
 from Bio import SeqIO
 from Variant_ADTs import VariantType
 from Variant_ADTs import Variant
 
-def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap):
+REFERENCE = ''
+
+def referenceVariantMaps(fatherVariantMap, motherVariantMap, childVariantMap, pathToReference):
 	
 	# for each of the child's variants
+	REFERENCE = pathToReference
+	numLocations = 0
 
 	for location in childVariantMap:
 		
+		#print status
+		numLocations += 1
+		if(numLocations % 1000 == 0):
+			print "%i child locations referenced" % numLocations
+
 		variant = childVariantMap[location]
 		parentAllele = lookupReference(location)
 
@@ -49,7 +58,7 @@ def lookupReference(variantLocation):
 		print "Invalid variant location format" + str(variantLocation)
 		return None
 
-	GENOME_PATH="/fslgroup/fslg_hap_rockets/compute/data/hg18"
+	GENOME_PATH = REFERENCE
 
 	chromosome = variantLocation[0]
 	if(isinstance(chromosome, int) or chromosome.isdigit()):

@@ -16,7 +16,7 @@ for record in vcf_reader:
     #    print record.REF,record.ALT[0],'  ',record.POS
     #print record.QUAL
         #print record
-        print record.CHROM
+        #print record.CHROM
         #print record.POS
         #print record.ID
         #print record.REF
@@ -25,8 +25,9 @@ for record in vcf_reader:
         #print record.FILTER
         #print record.INFO   
         #print record.genotype
-        print record.samples
-        print record.num_hom_ref, record.num_het, record.num_hom_alt
-        print "-------------------------------"
+        #print record.samples
+        #print record.num_hom_ref, record.num_het, record.num_hom_alt
+        #print "-------------------------------"
+	pass
 
 #class VCFData():
