@@ -15,10 +15,6 @@ Arguments are:
 The 3 variant files do not have to all be the same format, but they all have to be using the same reference genome.
 
 
-Example:
-
-python Main.py $MOTHER_VCF $FATHER_VCF $CHILD_VCF $REF_GENOME >
-"$OUTFILE"
 
   
 OUTPUT:
@@ -29,6 +25,14 @@ chr1 358793874 A M T F
 
 The position of the chromosome comes first, followed by the first allele and its source and the second allele and its source, either "M" for mother, "F" for father, or "U" for unknown, in the case of an unphasable variant.
 
+
+EXAMPLE:
+
+python SNPPhasingProject/Main.py testdata/VCF/mother_test.vcf testdata/VCF/father_test.vcf testdata/VCF/child_test.vcf $REF_GENOME > vcf_test.txt
+
+We used the hg18 build from
+http://hgdownload.soe.ucsc.edu/goldenPath/hg18/bigZips/chromFa.zip because our
+test data used it.
 
 TESTING:
 
