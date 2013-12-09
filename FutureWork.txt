@@ -1,6 +1,9 @@
 This project was for a CS418 Bioinformatics class at Brigham Young University. Currently, the project would benefit from future work, including:
+
 -reducing the memory requirement: The phaser must check the human reference genome at the specified location to determine whether a reported genotype
 	is actually a SNP. Maybe there is a web service that could be used; it would be a trade-off between memory effeciency and offline use. Also, 
 	the VCF files are very large and a lot of the data in them gets thrown away.
 
 -rewriting the algorithm code in C: for faster execution inside the variant phaser code.
+
+-improve TestDriver.py, the tests that we have are not very comprehensive or flexible.

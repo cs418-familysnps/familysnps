@@ -19,7 +19,7 @@ The 3 variant files do not have to all be the same format, but they all have to 
   
 OUTPUT:
   
-Output is printed to the screen, so route it to a file.  An example output would be:
+Output is sent to phasevariants.txt.  An example output for a single variant would be:
 
 chr1 358793874 A M T F
 
@@ -28,7 +28,7 @@ The position of the chromosome comes first, followed by the first allele and its
 
 EXAMPLE:
 
-python SNPPhasingProject/Main.py testdata/VCF/mother_test.vcf testdata/VCF/father_test.vcf testdata/VCF/child_test.vcf $REF_GENOME > vcf_test.txt
+python SNPPhasingProject/Main.py testdata/VCF/mother_test.vcf testdata/VCF/father_test.vcf testdata/VCF/child_test.vcf $REF_GENOME
 
 We used the hg18 build from
 http://hgdownload.soe.ucsc.edu/goldenPath/hg18/bigZips/chromFa.zip because our
