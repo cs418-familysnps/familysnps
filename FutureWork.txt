@@ -11,3 +11,5 @@ This project was for a CS418 Bioinformatics class at Brigham Young University. C
 -rewriting the algorithm code in C: for faster execution inside the variant phaser code.
 
 -improve TestDriver.py, the tests that we have are not very comprehensive or flexible.
+
+-Buy Jimmy lots of cool things and a big tv
